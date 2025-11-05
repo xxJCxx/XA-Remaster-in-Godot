@@ -1,17 +1,17 @@
 [gd_scene load_steps=26 format=3 uid="uid://cuhojqnd06mom"]
 
-[ext_resource type="Script" path="res://assets/data/Menus/menu_opciones.gd" id="1_ib6e7"]
-[ext_resource type="Texture2D" uid="uid://dtgw4fqf3nuu8" path="res://assets/images/menuElements/options_win.png" id="2_5gr0g"]
-[ext_resource type="Texture2D" uid="uid://dsr7wbb47jl6k" path="res://assets/images/menuElements/buttons_tile.png" id="3_nxttx"]
-[ext_resource type="Shader" path="res://assets/data/Shaders/Profundidad.gdshader" id="4_qo0v3"]
-[ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="5_axc5i"]
-[ext_resource type="AudioStream" uid="uid://dv2x7x7kgcthd" path="res://assets/audio/fx/win/click.ogg" id="6_m3y2c"]
+[ext_resource type="Script" path="res://assets/data/Menus/menu_opciones.gd" id="1_72cp8"]
+[ext_resource type="Texture2D" uid="uid://dtgw4fqf3nuu8" path="res://assets/images/menuElements/options_win.png" id="2_xhckr"]
+[ext_resource type="Texture2D" uid="uid://dsr7wbb47jl6k" path="res://assets/images/menuElements/buttons_tile.png" id="3_imai4"]
+[ext_resource type="Shader" path="res://assets/data/Shaders/Profundidad.gdshader" id="4_ygmlf"]
+[ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="5_8xpom"]
+[ext_resource type="AudioStream" uid="uid://dv2x7x7kgcthd" path="res://assets/audio/fx/win/click.ogg" id="6_xmgpk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqsre"]
-atlas = ExtResource("2_5gr0g")
+atlas = ExtResource("2_xhckr")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yf1d3"]
-atlas = ExtResource("2_5gr0g")
+atlas = ExtResource("2_xhckr")
 region = Rect2(4, 390, 32, 28)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fvnqx"]
@@ -29,7 +29,7 @@ region = Rect2(4, 390, 32, 28)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a3ktu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8j458"]
-atlas = ExtResource("2_5gr0g")
+atlas = ExtResource("2_xhckr")
 region = Rect2(40, 386, 28, 26)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q8w2f"]
@@ -40,16 +40,16 @@ atlas = SubResource("CompressedTexture2D_q8w2f")
 region = Rect2(70, 386, 28, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dre07"]
-atlas = ExtResource("3_nxttx")
+atlas = ExtResource("3_imai4")
 region = Rect2(13, 206, 94, 50)
 margin = Rect2(8, 6, 0, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqwp5"]
-atlas = ExtResource("3_nxttx")
+atlas = ExtResource("3_imai4")
 region = Rect2(112, 200, 94, 50)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lubpq"]
-shader = ExtResource("4_qo0v3")
+shader = ExtResource("4_ygmlf")
 shader_parameter/amount = 1.5
 
 [sub_resource type="Gradient" id="Gradient_atvjx"]
@@ -75,7 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ib6e7")
+script = ExtResource("1_72cp8")
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -225,8 +225,8 @@ scale = Vector2(0.0333333, 0.0590414)
 texture = SubResource("GradientTexture2D_yyv26")
 metadata/_edit_lock_ = true
 
-[node name="sfx_node" parent="." instance=ExtResource("5_axc5i")]
-stream = ExtResource("6_m3y2c")
+[node name="sfx_node" parent="." instance=ExtResource("5_8xpom")]
+stream = ExtResource("6_xmgpk")
 
 [connection signal="value_changed" from="CanvasLayer/Menu/HSlider_musica" to="." method="_on_h_slider_musica_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Menu/HSlider_sfx" to="." method="_on_h_slider_sfx_value_changed"]

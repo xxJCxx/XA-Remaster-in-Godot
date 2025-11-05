@@ -12,14 +12,4 @@ dest_files=["res://.godot/imported/fuente_blanca.png-f1517f89112e4ff9e0ffcff8d5b
 
 [params]
 
-character_ranges=PackedStringArray()
-kerning_pairs=PackedStringArray()
-columns=1
-rows=1
-image_margin=Rect2i(0, 0, 0, 0)
-character_margin=Rect2i(0, 0, 0, 0)
-ascent=0
-descent=0
-fallbacks=[]
-compress=true
-scaling_mode=2
+dummy_value_ignore_me=0
