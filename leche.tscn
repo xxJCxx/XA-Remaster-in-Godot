@@ -1,0 +1,146 @@
+[gd_scene load_steps=14 format=3 uid="uid://bjfu5uqranqmw"]
+
+[ext_resource type="Script" path="res://area_leche.gd" id="1_fdkmx"]
+[ext_resource type="Texture2D" uid="uid://bsqrvytr6rli2" path="res://assets/images/menuElements/items_tile.png" id="2_hkqlx"]
+[ext_resource type="Texture2D" uid="uid://c37yp1et808uc" path="res://assets/images/elements/items_effect_tile.png" id="3_08rni"]
+[ext_resource type="AudioStream" uid="uid://b3u46dg2m7l5l" path="res://assets/audio/fx/win/energy.ogg" id="4_tf43d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pcxb"]
+size = Vector2(32, 32)
+
+[sub_resource type="Curve" id="Curve_l16bx"]
+_data = [Vector2(0, 0.186813), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_je0x2"]
+curve = SubResource("Curve_l16bx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qek8j"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 1)
+angle_min = -90.0
+angle_max = 90.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+gravity = Vector3(0, -20, 0)
+scale_curve = SubResource("CurveTexture_je0x2")
+
+[sub_resource type="Gradient" id="Gradient_nhymq"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p6k7c"]
+gradient = SubResource("Gradient_nhymq")
+width = 32
+height = 32
+use_hdr = true
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_7fihl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_spisx"]
+resource_name = "take_item"
+length = 0.93334
+step = 0.0666667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.933333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"desabilitar"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5quf"]
+_data = {
+"RESET": SubResource("Animation_7fihl"),
+"take_item": SubResource("Animation_spisx")
+}
+
+[node name="leche" type="Node2D"]
+
+[node name="area_leche" type="Area2D" parent="."]
+script = ExtResource("1_fdkmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_leche"]
+shape = SubResource("RectangleShape2D_2pcxb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 6
+texture = ExtResource("2_hkqlx")
+hframes = 9
+vframes = 5
+frame = 6
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+process_material = SubResource("ParticleProcessMaterial_qek8j")
+texture = SubResource("GradientTexture2D_p6k7c")
+lifetime = 2.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+z_index = 6
+texture = ExtResource("3_08rni")
+hframes = 4
+vframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 0, 360, 360)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../area_leche")
+libraries = {
+"": SubResource("AnimationLibrary_u5quf")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tf43d")
+
+[connection signal="body_entered" from="area_leche" to="area_leche" method="_on_body_entered"]
