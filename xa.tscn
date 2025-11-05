@@ -275,6 +275,21 @@ _data = {
 "daño": SubResource("Animation_i7xew")
 }
 
+[sub_resource type="Animation" id="Animation_631t3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/HUD/CanvasLayer/doble_salto_anim:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
 [sub_resource type="Animation" id="Animation_2kt2f"]
 resource_name = "doble_salto_anim"
 length = 0.53334
@@ -290,21 +305,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_631t3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D/HUD/CanvasLayer/doble_salto_anim:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmii5"]
@@ -715,9 +715,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D"]
-libraries = {
-"": SubResource("AnimationLibrary_hj6mk")
-}
 tree_root = SubResource("AnimationNodeStateMachine_r4f2q")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Activar_escudo = false
