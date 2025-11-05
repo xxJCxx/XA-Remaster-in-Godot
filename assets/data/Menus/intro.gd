@@ -1,5 +1,6 @@
 extends Control
 
+var config = ConfigFile.new()
 var save = preload("res://save/save_data.json")
 @export var Intro2 = false
 var press = false
@@ -12,11 +13,15 @@ func _input(_event) -> void :
 		get_tree().change_scene_to_file("res://assets/data/Menus/load_menu_principal.tscn")
 
 func _ready() -> void :
-	ResourceSaver.save(save, "user://save_data.json")
-	print(OS.get_user_data_dir())
-	var config = ConfigFile.new()
-	config.load("res://config/config.cfg")
-	config.save("user://config.cfg")
+	if not ResourceLoader.exists("user://save_data.json"):
+		ResourceSaver.save(save, "user://save_data.json")
+	if FileAccess.file_exists("user://config.cfg"):
+		print("existe")
+		config.load("user://config.cfg")
+	else:
+		print("no existe")
+		config.load("res://config/config.cfg")
+		config.save("user://config.cfg")
 	$MusicaIntro.actualizar()
 	$sfx_piano.actualizar()
 	$Animaciones.play("Intro")
@@ -28,7 +33,8 @@ func play_anim2():
 	Diapositiva += 1
 
 
-func _process(delta: float) -> void :
+func _process(_delta) -> void :
+	#print(config.get_value("volumen", "vol_musica"))
 	if Input.is_anything_pressed() and Intro == false and Intro2 == true:
 		Intro = true;
 
