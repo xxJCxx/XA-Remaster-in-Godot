@@ -12,4 +12,14 @@ dest_files=["res://.godot/imported/fuente_pixelada.png-e8112710ad5358c9c89f88124
 
 [params]
 
-dummy_value_ignore_me=0
+character_ranges=PackedStringArray()
+kerning_pairs=PackedStringArray()
+columns=1
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2
