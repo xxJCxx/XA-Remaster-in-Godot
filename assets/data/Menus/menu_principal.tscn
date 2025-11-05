@@ -1,0 +1,418 @@
+[gd_scene load_steps=34 format=3 uid="uid://cfk2iff16u7w1"]
+
+[ext_resource type="Script" path="res://assets/data/Menus/menu_principal.gd" id="1_d54rk"]
+[ext_resource type="Texture2D" uid="uid://dv3jspu7oem70" path="res://assets/lang/images/help/ayuda.jpg" id="2_7k0n7"]
+[ext_resource type="Texture2D" uid="uid://cs3tooom1mvvk" path="res://assets/lang/images/credits/creditos.jpg" id="3_igue2"]
+[ext_resource type="Texture2D" uid="uid://kvnpq6c1jay7" path="res://assets/data/Menus/Texture_menu_principal_night.tres" id="4_1h41r"]
+[ext_resource type="Texture2D" uid="uid://dsr7wbb47jl6k" path="res://assets/images/menuElements/buttons_tile.png" id="5_dkasb"]
+[ext_resource type="PackedScene" uid="uid://cuhojqnd06mom" path="res://assets/data/Menus/menu_opciones.tscn" id="6_rnax0"]
+[ext_resource type="PackedScene" uid="uid://kvwh6ycn6v1h" path="res://assets/data/Menus/menu_salir_juego.tscn" id="7_mb4qi"]
+[ext_resource type="PackedScene" uid="uid://cdyd8it8yinyp" path="res://assets/audio/music/music_node.tscn" id="8_hps02"]
+[ext_resource type="AudioStream" uid="uid://bn2ffduxy1t4e" path="res://assets/audio/music/win/xa_menu.ogg" id="9_nc7nm"]
+[ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="10_5nqni"]
+[ext_resource type="AudioStream" uid="uid://dv2x7x7kgcthd" path="res://assets/audio/fx/win/click.ogg" id="11_oejpv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fi10"]
+atlas = ExtResource("2_7k0n7")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qm3b"]
+atlas = ExtResource("3_igue2")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="Animation" id="Animation_k0cnm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ColorRect4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 540)]
+}
+
+[sub_resource type="Animation" id="Animation_vem8l"]
+resource_name = "mostrar"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(240, 0), Vector2(240, -560)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ColorRect4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(240, 540), Vector2(240, 1100)]
+}
+
+[sub_resource type="Animation" id="Animation_0qt84"]
+resource_name = "ocultar"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(240, -560), Vector2(240, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ColorRect4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(240, 1100), Vector2(240, 540)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"cambiar_escena"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j24t5"]
+_data = {
+"RESET": SubResource("Animation_k0cnm"),
+"mostrar": SubResource("Animation_vem8l"),
+"ocultar": SubResource("Animation_0qt84")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4vfr"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(16, 59, 96, 44)
+margin = Rect2(10, 7, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3xy2"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(16, 59, 96, 44)
+margin = Rect2(10, 7, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqslh"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(112, 52, 96, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lui50"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(14, 112, 93, 35)
+margin = Rect2(7, 5, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp5ks"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(14, 112, 93, 35)
+margin = Rect2(7, 5, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq2c5"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(112, 107, 93, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5s4s"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(238, 113, 68, 33)
+margin = Rect2(7, 5, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4by0x"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(238, 113, 68, 33)
+margin = Rect2(7, 5, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxi80"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(337, 108, 68, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6q1h"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(13, 161, 95, 39)
+margin = Rect2(7, 6, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhgat"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(13, 161, 95, 39)
+margin = Rect2(7, 6, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7donj"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(112, 155, 95, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aq1o"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(239, 63, 68, 37)
+margin = Rect2(8, 6, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cadj3"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(239, 63, 68, 37)
+margin = Rect2(8, 6, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp7gh"]
+atlas = ExtResource("5_dkasb")
+region = Rect2(337, 56, 68, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iykbh"]
+size = Vector2(1920, 1080)
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d54rk")
+metadata/_edit_horizontal_guides_ = [540.0]
+metadata/_edit_vertical_guides_ = [960.0]
+metadata/_edit_lock_ = true
+
+[node name="Ayuda" type="TextureRect" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.874867
+anchor_bottom = 0.999822
+offset_right = -927.744
+offset_bottom = -695.808
+scale = Vector2(2.812, 2.812)
+texture = SubResource("AtlasTexture_1fi10")
+metadata/_edit_use_anchors_ = true
+
+[node name="Creditos" type="TextureRect" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.874867
+anchor_bottom = 0.999822
+offset_right = -927.744
+offset_bottom = -695.808
+scale = Vector2(2.812, 2.812)
+texture = SubResource("AtlasTexture_3qm3b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Animacion_transicion" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Fondo")
+libraries = {
+"": SubResource("AnimationLibrary_j24t5")
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.875
+anchor_bottom = 1.0
+offset_right = -0.00012207
+offset_bottom = -523.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 240.0
+offset_top = 540.0
+offset_right = 1680.0
+offset_bottom = 1096.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Fondo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_right = -1168.0
+offset_bottom = -696.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.812, 2.812)
+texture = ExtResource("4_1h41r")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Fondo"]
+layout_mode = 0
+offset_left = -89.0
+offset_bottom = 384.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Fondo"]
+layout_mode = 0
+offset_left = 512.0
+offset_right = 610.0
+offset_bottom = 384.0
+scale = Vector2(1.00587, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="Boton_Jugar" type="TextureButton" parent="." groups=["buttons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.425229
+anchor_top = 0.706778
+anchor_right = 0.575229
+anchor_bottom = 0.815778
+offset_left = -0.440002
+offset_top = -0.320068
+offset_right = -192.44
+offset_bottom = -74.04
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_l4vfr")
+texture_pressed = SubResource("AtlasTexture_f3xy2")
+texture_hover = SubResource("AtlasTexture_xqslh")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Boton_Opciones" type="TextureButton" parent="." groups=["buttons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.429229
+anchor_top = 0.816778
+anchor_right = 0.575229
+anchor_bottom = 0.907778
+offset_left = 0.880005
+offset_top = -2.12
+offset_right = -186.44
+offset_bottom = -65.4
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_lui50")
+texture_pressed = SubResource("AtlasTexture_wp5ks")
+texture_hover = SubResource("AtlasTexture_lq2c5")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Boton_Ayuda" type="TextureButton" parent="." groups=["buttons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.313229
+anchor_top = 0.818778
+anchor_right = 0.420229
+anchor_bottom = 0.909778
+offset_left = 0.599915
+offset_top = -0.28009
+offset_right = -136.84
+offset_bottom = -65.5601
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_c5s4s")
+texture_pressed = SubResource("AtlasTexture_4by0x")
+texture_hover = SubResource("AtlasTexture_fxi80")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Boton_Creditos" type="TextureButton" parent="." groups=["buttons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.578229
+anchor_top = 0.803778
+anchor_right = 0.726229
+anchor_bottom = 0.911778
+offset_left = -0.199951
+offset_top = -0.0800171
+offset_right = -189.36
+offset_bottom = -77.72
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_h6q1h")
+texture_pressed = SubResource("AtlasTexture_rhgat")
+texture_hover = SubResource("AtlasTexture_7donj")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Boton_Salir" type="TextureButton" parent="." groups=["buttons"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.446229
+anchor_top = 0.908778
+anchor_right = 0.552229
+anchor_bottom = 1.00178
+offset_left = 0.239929
+offset_top = -10.48
+offset_right = -135.28
+offset_bottom = -73.92
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = SubResource("AtlasTexture_5aq1o")
+texture_pressed = SubResource("AtlasTexture_cadj3")
+texture_hover = SubResource("AtlasTexture_gp7gh")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="menu_opciones" parent="." instance=ExtResource("6_rnax0")]
+layout_mode = 1
+
+[node name="menu_salir_juego" parent="." instance=ExtResource("7_mb4qi")]
+layout_mode = 1
+
+[node name="Music_node" parent="." instance=ExtResource("8_hps02")]
+stream = ExtResource("9_nc7nm")
+autoplay = true
+
+[node name="sfx_node" parent="." instance=ExtResource("10_5nqni")]
+stream = ExtResource("11_oejpv")
+
+[node name="Touch_Ayuda_Creditos" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2(960, 544)
+shape = SubResource("RectangleShape2D_iykbh")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Boton_Jugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="Boton_Opciones" to="." method="_on_boton_opciones_pressed"]
+[connection signal="pressed" from="Boton_Ayuda" to="." method="_on_boton_ayuda_pressed"]
+[connection signal="pressed" from="Boton_Creditos" to="." method="_on_boton_creditos_pressed"]
+[connection signal="pressed" from="Boton_Salir" to="." method="_on_boton_salir_pressed"]
+[connection signal="pressed" from="Touch_Ayuda_Creditos" to="." method="_on_touch_ayuda_creditos_pressed"]

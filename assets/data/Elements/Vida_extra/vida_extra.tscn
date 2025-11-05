@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=4 uid="uid://fo63252qdyrm"]
+
+[ext_resource type="Script" path="res://assets/data/Elements/Vida_extra/vida_extra.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bsqrvytr6rli2" path="res://assets/images/menuElements/items_tile.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c37yp1et808uc" path="res://assets/images/elements/items_effect_tile.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://cdww40uj0hbga" path="res://assets/audio/fx/win/extra_life.ogg" id="4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1l1w"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_7fihl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_take_item:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_spisx"]
+resource_name = "take_item"
+length = 1.00001
+step = 0.0666667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"desabilitar"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_take_item:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533334, 0.6, 0.666667, 0.733334, 0.8, 0.866667, 0.933334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5quf"]
+_data = {
+"RESET": SubResource("Animation_7fihl"),
+"take_item": SubResource("Animation_spisx")
+}
+
+[node name="Vida_extra" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1")
+
+[node name="Sprite_Vida_extra" type="Sprite2D" parent="."]
+position = Vector2(17, -17)
+texture = ExtResource("2")
+region_enabled = true
+region_rect = Rect2(4, 48, 52, 52)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(17, -17)
+shape = SubResource("RectangleShape2D_f1l1w")
+
+[node name="Sprite_take_item" type="Sprite2D" parent="."]
+visible = false
+z_index = 6
+position = Vector2(17, -17)
+texture = ExtResource("3")
+hframes = 4
+vframes = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 360, 360)
+
+[node name="Animacion_take_item" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u5quf")
+}
+
+[node name="sfx_extra_life" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

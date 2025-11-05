@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://q63ua8e04gja"]
+
+[ext_resource type="FontFile" uid="uid://blyiu2mk70eyd" path="res://assets/lang/images/fuente_negra.png" id="1"]
+
+[sub_resource type="FontVariation" id="FontVariation_pfgta"]
+base_font = ExtResource("1")
+spacing_glyph = -9
+spacing_space = 8
+
+[resource]
+line_spacing = -10.0
+font = SubResource("FontVariation_pfgta")

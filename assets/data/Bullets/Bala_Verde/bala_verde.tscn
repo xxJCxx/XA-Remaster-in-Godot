@@ -1,0 +1,180 @@
+[gd_scene load_steps=13 format=4 uid="uid://cqh5osnocj2fq"]
+
+[ext_resource type="Script" path="res://assets/data/Bullets/Bala_Verde/area_bala.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c7fceyaepd5wn" path="res://assets/images/elements/planilla_blasts_xa_512x512_24bits.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://bcrqsaws6vsrj" path="res://assets/audio/fx/win/bullet_wall_1.ogg" id="3"]
+[ext_resource type="AudioStream" uid="uid://b61q5exb5e6p2" path="res://assets/audio/fx/win/bullet_wall_2.ogg" id="4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr1se"]
+size = Vector2(16, 16)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_swsv8"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3g1kc"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ync86"]
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_acji0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Colision_Enemigo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_Colision_Pared:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_okgfy"]
+resource_name = "hit enemy"
+length = 0.16667
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Colision_Enemigo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_een87"]
+resource_name = "hit_wall"
+length = 0.16667
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Colision_Pared:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48s4y"]
+_data = {
+"RESET": SubResource("Animation_acji0"),
+"hit enemy": SubResource("Animation_okgfy"),
+"hit_wall": SubResource("Animation_een87")
+}
+
+[node name="Bala_verde" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1")
+
+[node name="CollisionShape_Area_Bala" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_kr1se")
+
+[node name="Sprite_Bala_Verde" type="Sprite2D" parent="."]
+z_index = 2
+material = SubResource("CanvasItemMaterial_swsv8")
+position = Vector2(0, 9)
+texture = ExtResource("2")
+hframes = 10
+vframes = 6
+frame = 17
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 362)
+
+[node name="Sprite_Colision_Enemigo" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+material = SubResource("CanvasItemMaterial_3g1kc")
+position = Vector2(0, 9)
+texture = ExtResource("2")
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 364, 96, 24)
+
+[node name="Sprite_Colision_Pared" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+material = SubResource("CanvasItemMaterial_ync86")
+position = Vector2(0, 9)
+texture = ExtResource("2")
+offset = Vector2(-10, 0)
+flip_h = true
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(274.789, 122.329, 283.776, 77.671)
+
+[node name="sfx_Colision_Pared1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3")
+
+[node name="sfx_Colision_Pared2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_48s4y")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

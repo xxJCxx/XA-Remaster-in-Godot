@@ -1,0 +1,645 @@
+[gd_scene load_steps=41 format=3 uid="uid://hya1q5yiqs3g"]
+
+[ext_resource type="Script" path="res://assets/data/Menus/intro.gd" id="1_kijyh"]
+[ext_resource type="Texture2D" uid="uid://cnlpdcfkqco0i" path="res://assets/lang/images/intros/page_1.jpg" id="2_3fow8"]
+[ext_resource type="Texture2D" uid="uid://cd6i2hvh2h1s8" path="res://assets/lang/images/intros/page_2.jpg" id="3_p1kw1"]
+[ext_resource type="Texture2D" uid="uid://dvr8g7rvckfp" path="res://assets/lang/images/intros/page_3.jpg" id="4_a5534"]
+[ext_resource type="Texture2D" uid="uid://uejefiepbahf" path="res://assets/lang/images/intros/page_4.jpg" id="5_mffjj"]
+[ext_resource type="Texture2D" uid="uid://dfdl8igvfat4n" path="res://assets/lang/images/intros/page_5.jpg" id="6_tgo6m"]
+[ext_resource type="Texture2D" uid="uid://8knh7igac3kd" path="res://assets/images/menuElements/screen_logo_calcar.jpg" id="7_jk4jr"]
+[ext_resource type="Texture2D" uid="uid://46nruektibhy" path="res://assets/images/menuElements/screen_logo_batovi.jpg" id="8_mbxo8"]
+[ext_resource type="Texture2D" uid="uid://bdvre81u0knw4" path="res://assets/images/menuElements/cargando_tile.png" id="9_gas42"]
+[ext_resource type="Texture2D" uid="uid://xqyhkfn15itr" path="res://assets/lang/images/intros/fondo_niveles.png" id="10_l4r12"]
+[ext_resource type="PackedScene" uid="uid://cdyd8it8yinyp" path="res://assets/audio/music/music_node.tscn" id="11_ml52i"]
+[ext_resource type="AudioStream" uid="uid://debkt6i605cmh" path="res://assets/audio/music/win/xa_intro.ogg" id="12_yp57i"]
+[ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="13_tct4p"]
+[ext_resource type="AudioStream" uid="uid://beo3vf5fy0v8t" path="res://assets/audio/music/win/intro_piano.ogg" id="14_kj0r5"]
+[ext_resource type="Script" path="res://assets/audio/music/music_node.gd" id="15_llq27"]
+[ext_resource type="LabelSettings" uid="uid://q63ua8e04gja" path="res://assets/lang/Fuente_negra.tres" id="16_f63j8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytui8"]
+atlas = ExtResource("2_3fow8")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="Animation" id="Animation_55txu"]
+resource_name = "Diap1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteScene:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_ytui8")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_apretar_tecla")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_apretar_tecla")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"hide"
+}, {
+"args": [],
+"method": &"show"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicaIntro")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteScene:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite_cargando")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:Intro")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sksvg"]
+atlas = ExtResource("3_p1kw1")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="Animation" id="Animation_0gvcg"]
+resource_name = "Diap2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteScene:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_sksvg")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_apretar_tecla")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_apretar_tecla")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"hide"
+}, {
+"args": [],
+"method": &"show"
+}]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehoyy"]
+atlas = ExtResource("4_a5534")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="Animation" id="Animation_lw8gw"]
+resource_name = "Diap3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteScene:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_ehoyy")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_apretar_tecla")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_apretar_tecla")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"hide"
+}, {
+"args": [],
+"method": &"show"
+}]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3u5w"]
+atlas = ExtResource("5_mffjj")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="Animation" id="Animation_iweli"]
+resource_name = "Diap4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteScene:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_m3u5w")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_apretar_tecla")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_apretar_tecla")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"hide"
+}, {
+"args": [],
+"method": &"show"
+}]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngibu"]
+atlas = ExtResource("6_tgo6m")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="Animation" id="Animation_hog55"]
+resource_name = "Diap5"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteScene:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_ngibu")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_apretar_tecla")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_apretar_tecla")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"hide"
+}, {
+"args": [],
+"method": &"show"
+}]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu47g"]
+atlas = ExtResource("7_jk4jr")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ff0e"]
+atlas = ExtResource("8_mbxo8")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp1w2"]
+atlas = ExtResource("9_gas42")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="Animation" id="Animation_lw40g"]
+resource_name = "Intro"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteScene:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("AtlasTexture_wu47g"), SubResource("AtlasTexture_6ff0e"), SubResource("AtlasTexture_tp1w2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 4, 4.5, 5, 8, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_cargando")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hide"
+}, {
+"args": [&"", 1.0, false],
+"method": &"play"
+}, {
+"args": [],
+"method": &"show"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite_cargando:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite_apretar_tecla")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:Intro2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 8.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(8.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_anim2"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sfx_piano")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6ydt"]
+atlas = ExtResource("9_gas42")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="Animation" id="Animation_x0uy0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteScene:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("AtlasTexture_j6ydt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteScene:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_cargando:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:Intro2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:Intro")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ws7e"]
+_data = {
+"Diap1": SubResource("Animation_55txu"),
+"Diap2": SubResource("Animation_0gvcg"),
+"Diap3": SubResource("Animation_lw8gw"),
+"Diap4": SubResource("Animation_iweli"),
+"Diap5": SubResource("Animation_hog55"),
+"Intro": SubResource("Animation_lw40g"),
+"RESET": SubResource("Animation_x0uy0")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khos6"]
+atlas = ExtResource("9_gas42")
+region = Rect2(0, 388, 260, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywguv"]
+atlas = ExtResource("9_gas42")
+region = Rect2(0, 428, 260, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywmn3"]
+atlas = ExtResource("9_gas42")
+region = Rect2(0, 468, 260, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_465vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khos6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywguv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywmn3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_futmq"]
+atlas = ExtResource("10_l4r12")
+region = Rect2(0, 416, 260, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0icj"]
+atlas = ExtResource("10_l4r12")
+region = Rect2(0, 386, 260, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32vom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_futmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0icj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kijyh")
+metadata/_edit_vertical_guides_ = [960.0]
+metadata/_edit_horizontal_guides_ = [580.0]
+metadata/_edit_lock_ = true
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2ws7e")
+}
+
+[node name="SpriteScene" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(960, 540)
+scale = Vector2(2.812, 2.82)
+texture = SubResource("AtlasTexture_j6ydt")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite_cargando" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1313, 867)
+scale = Vector2(2.8, 2.8)
+sprite_frames = SubResource("SpriteFrames_465vc")
+frame_progress = 0.909083
+
+[node name="Sprite_apretar_tecla" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1290, 1038)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_32vom")
+frame_progress = 0.700527
+
+[node name="MusicaIntro" parent="." instance=ExtResource("11_ml52i")]
+stream = ExtResource("12_yp57i")
+
+[node name="sfx_piano" parent="." instance=ExtResource("13_tct4p")]
+stream = ExtResource("14_kj0r5")
+script = ExtResource("15_llq27")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.447059)
+layout_mode = 0
+anchor_left = 0.143229
+anchor_top = 0.0231481
+anchor_right = 0.335417
+anchor_bottom = 0.0648148
+offset_right = -123.0
+offset_bottom = -15.0
+scale = Vector2(1.5, 1.5)
+text = "Preciona \"Esc\" para Saltar"
+label_settings = ExtResource("16_f63j8")
+metadata/_edit_use_anchors_ = true

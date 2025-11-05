@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=4 uid="uid://wqsgv1sis3tx"]
+
+[ext_resource type="Script" path="res://assets/data/Enemies/Mina/Mina.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dnetxu8wuayo" path="res://assets/images/enemies/plantilla_enemigos_xa.png" id="2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6nmq"]
+size = Vector2(28, 5.75)
+
+[node name="Mina" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(15, -9)
+texture = ExtResource("2")
+region_enabled = true
+region_rect = Rect2(376, 332, 36, 28)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(16, -3.125)
+shape = SubResource("RectangleShape2D_n6nmq")
+debug_color = Color(0.997975, 0, 0.153572, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

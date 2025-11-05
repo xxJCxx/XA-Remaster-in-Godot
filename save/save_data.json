@@ -1,0 +1,172 @@
+{
+	"nivel_actual": 1,
+	"vidas": 3,
+	"niveles": [
+		{
+			"nombre": "Campos del Oeste",
+			"descripcion": "Una mañana que no es como cualquier otra.\n¡Los extraterrestres han invadido la tierra\ny se están robando nuestras vacas!\nXA debe llegar rápido al pueblo...",
+			"desbloqueado": true,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 99999,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Pueblo: \"Los ceibos\"",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Bañados del Sur",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "Los Silos",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		}
+	]
+}

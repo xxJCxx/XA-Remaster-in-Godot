@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=4 uid="uid://c2j7vls1uxv2u"]
+
+[ext_resource type="Texture2D" uid="uid://dhwsbf38yoa2q" path="res://assets/images/menuElements/map.png" id="1"]
+[ext_resource type="Script" path="res://assets/data/Menus/MenuElements/botón_nivel.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e48tp"]
+atlas = ExtResource("1")
+region = Rect2(102, 386, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqfw4"]
+atlas = ExtResource("1")
+region = Rect2(182, 386, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x6tt"]
+atlas = ExtResource("1")
+region = Rect2(142, 386, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lkxv"]
+atlas = ExtResource("1")
+region = Rect2(62, 386, 36, 26)
+
+[node name="botón_nivel" type="TextureButton"]
+anchor_left = -0.028125
+anchor_top = -0.0361111
+anchor_right = 0.028125
+anchor_bottom = 0.0361111
+offset_left = 36.0
+offset_top = 26.0
+offset_right = -36.0
+offset_bottom = -26.0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(18, 13)
+texture_normal = SubResource("AtlasTexture_e48tp")
+texture_pressed = SubResource("AtlasTexture_jqfw4")
+texture_hover = SubResource("AtlasTexture_0x6tt")
+texture_disabled = SubResource("AtlasTexture_3lkxv")
+script = ExtResource("2")
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx_node" parent="." instance=ExtResource("3")]

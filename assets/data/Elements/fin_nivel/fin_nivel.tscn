@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=4 uid="uid://xp812n5p16hq"]
+
+[ext_resource type="Script" path="res://assets/data/Elements/fin_nivel/fin_nivel.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cdyd8it8yinyp" path="res://assets/audio/music/music_node.tscn" id="2"]
+[ext_resource type="AudioStream" uid="uid://cac1iosn1v357" path="res://assets/audio/fx/win/end_level.ogg" id="3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kti0"]
+size = Vector2(64, 1120)
+
+[node name="fin_nivel" type="Area2D"]
+script = ExtResource("1")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(32, 528)
+shape = SubResource("RectangleShape2D_8kti0")
+
+[node name="Music_node" parent="." instance=ExtResource("2")]
+stream = ExtResource("3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Animacion_fin" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

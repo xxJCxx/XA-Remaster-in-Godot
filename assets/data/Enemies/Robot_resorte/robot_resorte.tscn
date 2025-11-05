@@ -1,0 +1,372 @@
+[gd_scene load_steps=21 format=4 uid="uid://dw5fc8a5dwwtl"]
+
+[ext_resource type="Script" path="res://assets/data/Enemies/Robot_resorte/robot_resorte.gd" id="1"]
+[ext_resource type="Script" path="res://assets/data/Enemies/Robot_resorte/area_daño.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dnetxu8wuayo" path="res://assets/images/enemies/plantilla_enemigos_xa.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://dae1ni323m6d0" path="res://assets/audio/fx/win/jump_enemy.ogg" id="4"]
+[ext_resource type="AudioStream" uid="uid://dqi8w8nukdtja" path="res://assets/audio/fx/win/enemy_death.ogg" id="5"]
+[ext_resource type="AudioStream" uid="uid://dve2tsbkpud4c" path="res://assets/audio/fx/win/m_3.ogg" id="6"]
+[ext_resource type="Texture2D" uid="uid://c7fceyaepd5wn" path="res://assets/images/elements/planilla_blasts_xa_512x512_24bits.png" id="7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yudcj"]
+size = Vector2(20, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6plpo"]
+size = Vector2(24, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl1o4"]
+size = Vector2(24, 38)
+
+[sub_resource type="Animation" id="Animation_iraau"]
+resource_name = "Caida"
+length = 0.214293
+step = 0.0714286
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Robot_resorte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0714286, 0.142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:caida")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.214286),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7ba4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Robot_resorte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yibad"]
+resource_name = "Salto"
+length = 0.133337
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Robot_resorte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 1, 0, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"jump"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tiempo_salto")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1],
+"method": &"start"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx_jump")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qx11"]
+_data = {
+"Caida": SubResource("Animation_iraau"),
+"RESET": SubResource("Animation_7ba4u"),
+"Salto": SubResource("Animation_yibad")
+}
+
+[sub_resource type="Animation" id="Animation_o1xpl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Muerte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_Robot_resorte:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_Muerte:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4aeqh"]
+resource_name = "explosion"
+length = 0.550005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Muerte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx_Muerte")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite_Robot_resorte:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite_Muerte:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dyd71"]
+resource_name = "hurt"
+length = 0.400005
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_005fp"]
+_data = {
+"RESET": SubResource("Animation_o1xpl"),
+"explosion": SubResource("Animation_4aeqh"),
+"hurt": SubResource("Animation_dyd71")
+}
+
+[sub_resource type="Gradient" id="Gradient_iind6"]
+colors = PackedColorArray(0, 0.929412, 0.235294, 0.666667, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v1m1t"]
+gradient = SubResource("Gradient_iind6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.05)
+
+[node name="Robot_resorte" type="CharacterBody2D"]
+collision_layer = 512
+script = ExtResource("1")
+
+[node name="Colision_Robot_resorte" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_yudcj")
+
+[node name="Area_daño" type="Area2D" parent="Colision_Robot_resorte"]
+position = Vector2(0, -10)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("2")
+
+[node name="Colision_Area_daño" type="CollisionShape2D" parent="Colision_Robot_resorte/Area_daño"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_6plpo")
+debug_color = Color(0, 0.649286, 0.149925, 0.42)
+
+[node name="Area_daño2" type="Area2D" parent="Colision_Robot_resorte"]
+position = Vector2(0, -10)
+collision_layer = 20
+collision_mask = 20
+script = ExtResource("2")
+
+[node name="Colision_Area_daño" type="CollisionShape2D" parent="Colision_Robot_resorte/Area_daño2"]
+position = Vector2(0, 16.0635)
+shape = SubResource("RectangleShape2D_gl1o4")
+debug_color = Color(0, 0.649286, 0.149925, 0.42)
+
+[node name="Sprite_Robot_resorte" type="Sprite2D" parent="."]
+texture = ExtResource("3")
+hframes = 4
+region_enabled = true
+region_rect = Rect2(0, 228, 200, 76)
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1qx11")
+}
+
+[node name="Animaciones_daño" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_005fp")
+}
+
+[node name="Tiempo_salto" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="sfx_jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4")
+
+[node name="sfx_Muerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5")
+
+[node name="sfx_Daño" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6")
+
+[node name="Sprite_Muerte" type="Sprite2D" parent="."]
+modulate = Color(0.78, 2, 2, 1)
+z_index = 2
+texture = ExtResource("7")
+hframes = 7
+region_enabled = true
+region_rect = Rect2(0, 60, 420, 60)
+
+[node name="Luz_Muerte" type="PointLight2D" parent="Sprite_Muerte"]
+visible = false
+texture = SubResource("GradientTexture2D_v1m1t")
+texture_scale = 1.91
+
+[node name="RayCast" type="RayCast2D" parent="."]
+collision_mask = 4
+
+[connection signal="area_entered" from="Colision_Robot_resorte/Area_daño" to="." method="_on_area_daño_area_entered"]
+[connection signal="area_entered" from="Colision_Robot_resorte/Area_daño2" to="." method="_on_area_daño_area_entered"]
+[connection signal="body_entered" from="Colision_Robot_resorte/Area_daño2" to="." method="_on_area_daño_2_body_entered"]
+[connection signal="timeout" from="Tiempo_salto" to="." method="_on_tiempo_salto_timeout"]

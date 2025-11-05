@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=4 uid="uid://cfe4fqblcenof"]
+
+[ext_resource type="PackedScene" uid="uid://xd7plywunob7" path="res://assets/data/Menus/load_screen.tscn" id="1"]
+[ext_resource type="Script" path="res://assets/data/Menus/load_game.gd" id="2"]
+
+[node name="Load_game" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=4 uid="uid://kvnpq6c1jay7"]
+
+[ext_resource type="Texture2D" uid="uid://ds4ulhk3kssq8" path="res://assets/images/menuElements/menu_night.jpg" id="1"]
+
+[resource]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 512, 384)

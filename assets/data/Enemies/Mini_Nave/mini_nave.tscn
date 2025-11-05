@@ -1,0 +1,204 @@
+[gd_scene load_steps=16 format=4 uid="uid://d10uyhdyi5780"]
+
+[ext_resource type="Script" path="res://assets/data/Enemies/Mini_Nave/mini_nave.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dnetxu8wuayo" path="res://assets/images/enemies/plantilla_enemigos_xa.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b48k250fn80dh" path="res://assets/images/enemies/plantilla_enemigos_xa_red.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://c7fceyaepd5wn" path="res://assets/images/elements/planilla_blasts_xa_512x512_24bits.png" id="4"]
+[ext_resource type="Script" path="res://assets/data/Enemies/Mini_Nave/Area_nave.gd" id="5"]
+[ext_resource type="AudioStream" uid="uid://dqi8w8nukdtja" path="res://assets/audio/fx/win/enemy_death.ogg" id="6"]
+[ext_resource type="AudioStream" uid="uid://dve2tsbkpud4c" path="res://assets/audio/fx/win/m_3.ogg" id="7"]
+
+[sub_resource type="Gradient" id="Gradient_lwpeo"]
+colors = PackedColorArray(0, 0.929412, 0.235294, 0.666667, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yhi7r"]
+gradient = SubResource("Gradient_lwpeo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.05)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wco3"]
+size = Vector2(27.1186, 29.3578)
+
+[sub_resource type="Animation" id="Animation_m6btt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Muerte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_p5ovf"]
+resource_name = "explosion"
+length = 0.400005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Muerte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx_Muerte")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"destroy_area"
+}, {
+"args": [],
+"method": &"destroy"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_687ha"]
+resource_name = "hurt"
+length = 0.400005
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_u1ayy"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d055p"]
+_data = {
+"RESET": SubResource("Animation_m6btt"),
+"explosion": SubResource("Animation_p5ovf"),
+"hurt": SubResource("Animation_687ha"),
+"idle": SubResource("Animation_u1ayy")
+}
+
+[node name="mini_nave" type="Node2D" groups=["enemigo"]]
+script = ExtResource("1")
+MovX = 50.0
+dirx = 1.571
+diry = 3.14159
+vel = Vector2(1.25, 2.5)
+
+[node name="Sprite_Nave" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("2")
+region_enabled = true
+region_rect = Rect2(192, 48, 68, 56)
+
+[node name="Sprite_Daño" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(-2.03, 0)
+texture = ExtResource("3")
+hframes = 8
+vframes = 10
+frame = 11
+
+[node name="Sprite_Muerte" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.78, 2, 2, 1)
+z_index = 2
+position = Vector2(-2.03, 0)
+texture = ExtResource("4")
+hframes = 7
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 60, 420, 60)
+
+[node name="Luz_Muerte" type="PointLight2D" parent="Sprite_Muerte"]
+position = Vector2(0, 9)
+texture = SubResource("GradientTexture2D_yhi7r")
+texture_scale = 1.91
+
+[node name="Area_Daño" type="Area2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("5")
+
+[node name="CollisionShape_Area_Daño2" type="CollisionShape2D" parent="Area_Daño"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(7.15256e-07, 1.19209e-06)
+scale = Vector2(1.18, 1.09)
+shape = SubResource("RectangleShape2D_0wco3")
+
+[node name="sfx_Muerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6")
+volume_db = 4.0
+
+[node name="sfx_Daño" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7")
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d055p")
+}
+
+[node name="Path2D" type="Path2D" parent="."]
+
+[connection signal="area_entered" from="Area_Daño" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area_Daño" to="." method="_on_area_2d_body_entered"]

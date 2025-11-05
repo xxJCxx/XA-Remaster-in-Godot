@@ -1,0 +1,263 @@
+[gd_scene load_steps=16 format=4 uid="uid://bi8kw1hbsmcdt"]
+
+[ext_resource type="Script" path="res://assets/data/Elements/Cartel/cartel.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ctktiumnw34km" path="res://assets/images/elements/signs_tile.png" id="2"]
+[ext_resource type="FontFile" uid="uid://blyiu2mk70eyd" path="res://assets/lang/images/fuente_negra.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cip312la7lxdm" path="res://assets/lang/images/fuente_negra_2.png" id="4"]
+[ext_resource type="AudioStream" uid="uid://b7joi235u07gv" path="res://assets/audio/fx/win/info.ogg" id="5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iarpg"]
+size = Vector2(96, 64.5)
+
+[sub_resource type="Animation" id="Animation_y6kfe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivote:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -97)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivote:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivote:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kv23p"]
+resource_name = "hide"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivote:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, -120), Vector2(16, -66)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivote:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivote:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rwqxm"]
+resource_name = "show"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivote:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, -66), Vector2(16, -120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivote:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivote:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx_cartel")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xynq"]
+_data = {
+"RESET": SubResource("Animation_y6kfe"),
+"hide": SubResource("Animation_kv23p"),
+"show": SubResource("Animation_rwqxm")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhvkm"]
+bg_color = Color(0.207843, 0.572549, 0.0862745, 1)
+skew = Vector2(0.12, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+shadow_color = Color(0.635294, 0.803922, 0.0941176, 1)
+shadow_size = 4
+
+[sub_resource type="FontVariation" id="FontVariation_xk7fh"]
+base_font = ExtResource("3")
+spacing_glyph = -9
+spacing_space = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_1tpwd"]
+font = SubResource("FontVariation_xk7fh")
+font_color = Color(0.716667, 1, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j8pfk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsmj6"]
+bg_color = Color(0.207843, 0.572549, 0.0862745, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(1, 0.807843, 0, 1)
+shadow_size = 2
+
+[node name="Cartel" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1")
+
+[node name="Sprite_Cartel" type="Sprite2D" parent="."]
+position = Vector2(16, -30)
+texture = ExtResource("2")
+region_enabled = true
+region_rect = Rect2(0, 4, 40, 64)
+
+[node name="Collision_Cartel" type="CollisionShape2D" parent="."]
+position = Vector2(16, -31.75)
+shape = SubResource("RectangleShape2D_iarpg")
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8xynq")
+}
+
+[node name="Pivote" type="Marker2D" parent="."]
+position = Vector2(0, -97)
+
+[node name="PanelContainer" type="PanelContainer" parent="Pivote"]
+modulate = Color(1.3, 1.3, 1.3, 0.74)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 20.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 16)
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhvkm")
+
+[node name="texto" type="Label" parent="Pivote/PanelContainer"]
+z_index = 1
+layout_mode = 2
+text = "texto"
+label_settings = SubResource("LabelSettings_1tpwd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivote/PanelContainer"]
+modulate = Color(0.576471, 1, 0, 1)
+z_index = 1
+material = SubResource("CanvasItemMaterial_j8pfk")
+position = Vector2(-8, -1)
+texture = ExtResource("4")
+region_enabled = true
+region_rect = Rect2(96, 184, 16, 20)
+
+[node name="PanelContainer" type="PanelContainer" parent="Pivote/PanelContainer/Sprite2D"]
+z_index = -1
+offset_left = -15.3333
+offset_top = -16.0
+offset_right = 14.6667
+offset_bottom = 14.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vsmj6")
+
+[node name="sfx_cartel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

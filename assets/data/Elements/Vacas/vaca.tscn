@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=4 uid="uid://djcf0a41wvl0l"]
+
+[ext_resource type="Script" path="res://assets/data/Elements/Vacas/vaca.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d3ptmcgkslstm" path="res://assets/images/elements/plantilla-vaca-2.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://32fd4o54n2bh" path="res://assets/images/elements/plantilla-vaca-1.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://b433lq4np06hw" path="res://assets/audio/fx/win/gracias_01.ogg" id="4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lys0"]
+size = Vector2(105.345, 88.28)
+
+[sub_resource type="Animation" id="Animation_l7fsi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_vaca:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_vaca:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_erdn0"]
+resource_name = "take_vaca"
+length = 2.07144
+step = 0.0714286
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_vaca:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0714286, 0.142857, 0.214286, 0.285714, 0.357143, 0.428571, 0.5, 0.571429, 0.642857, 0.714286, 0.785714, 0.857143, 0.928571, 1, 1.07143, 1.14286, 1.21429, 1.28571, 1.35714, 1.42857, 1.5, 1.57143, 1.64286, 1.71429, 1.78571, 1.85714, 1.92857, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 5, 6, 7, 8, 9, 10, 11, 13, 5, 6, 7, 8, 9, 10, 11, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_vaca:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.57143, 1.64286, 1.71429, 1.78571, 1.85714, 1.92857, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8u6vt"]
+_data = {
+"RESET": SubResource("Animation_l7fsi"),
+"take_vaca": SubResource("Animation_erdn0")
+}
+
+[node name="Vaca" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1")
+
+[node name="Sprite_vaca" type="Sprite2D" parent="."]
+position = Vector2(13, -42)
+texture = ExtResource("2")
+hframes = 6
+vframes = 3
+region_enabled = true
+region_rect = Rect2(0, 0, 924, 432)
+
+[node name="Sprite_encerrada" type="Sprite2D" parent="."]
+position = Vector2(13, -42)
+texture = ExtResource("3")
+region_enabled = true
+region_rect = Rect2(0, 0, 154, 144)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(13, -42)
+shape = SubResource("RectangleShape2D_4lys0")
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8u6vt")
+}
+
+[node name="sfx_gracias" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

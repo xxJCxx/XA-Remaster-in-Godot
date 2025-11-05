@@ -1,0 +1,8 @@
+GDRE Tools v1.0.0
+Bazzite 42.20250719.0 (Kinoite), AMD Radeon Vega 10 Graphics (radeonsi, raven, ACO, DRM 3.63, 6.15.6-105.bazzite.fc42.x86_64), opengl3
+Opening file: ~/Documentos/XA+.apk
+Loaded 231 imported files
+Detected Engine Version: 4.3.0.stable
+Detected Bytecode Revision: 4.3.0-stable (77af6ca)
+Extracted 477 files, no errors detected!
+WARNING: Conversion for Resource of type FontFile and format png not implemented for res://.godot/imported/fuente_blanca.png-f1517f89112e4ff9e0ffcff8d5bfbc3b.fontdata

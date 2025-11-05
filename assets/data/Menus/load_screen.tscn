@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=4 uid="uid://xd7plywunob7"]
+
+[ext_resource type="Script" path="res://assets/data/Menus/load_screen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bdvre81u0knw4" path="res://assets/images/menuElements/cargando_tile.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rv8g"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 512, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywmn3"]
+atlas = ExtResource("2")
+region = Rect2(0, 468, 260, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywguv"]
+atlas = ExtResource("2")
+region = Rect2(0, 428, 260, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khos6"]
+atlas = ExtResource("2")
+region = Rect2(0, 388, 260, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c84u2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywmn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywguv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khos6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Load_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="SpriteScene" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(2.812, 2.82)
+texture = SubResource("AtlasTexture_4rv8g")
+metadata/_edit_lock_ = true
+
+[node name="Sprite_cargando" type="AnimatedSprite2D" parent="SpriteScene"]
+z_index = 1
+position = Vector2(126.245, 116.312)
+scale = Vector2(1, 0.997163)
+sprite_frames = SubResource("SpriteFrames_c84u2")

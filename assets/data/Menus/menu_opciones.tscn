@@ -1,0 +1,236 @@
+[gd_scene load_steps=26 format=3 uid="uid://cuhojqnd06mom"]
+
+[ext_resource type="Script" path="res://assets/data/Menus/menu_opciones.gd" id="1_ib6e7"]
+[ext_resource type="Texture2D" uid="uid://dtgw4fqf3nuu8" path="res://assets/images/menuElements/options_win.png" id="2_5gr0g"]
+[ext_resource type="Texture2D" uid="uid://dsr7wbb47jl6k" path="res://assets/images/menuElements/buttons_tile.png" id="3_nxttx"]
+[ext_resource type="Shader" path="res://assets/data/Shaders/Profundidad.gdshader" id="4_qo0v3"]
+[ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="5_axc5i"]
+[ext_resource type="AudioStream" uid="uid://dv2x7x7kgcthd" path="res://assets/audio/fx/win/click.ogg" id="6_m3y2c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqsre"]
+atlas = ExtResource("2_5gr0g")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf1d3"]
+atlas = ExtResource("2_5gr0g")
+region = Rect2(4, 390, 32, 28)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fvnqx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lo3k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ny4xa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbix7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gy6kl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4inqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a3ktu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j458"]
+atlas = ExtResource("2_5gr0g")
+region = Rect2(40, 386, 28, 26)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q8w2f"]
+load_path = "res://.godot/imported/options_win.png-a442f863937ec60ac7f3d095427df48d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34nej"]
+atlas = SubResource("CompressedTexture2D_q8w2f")
+region = Rect2(70, 386, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dre07"]
+atlas = ExtResource("3_nxttx")
+region = Rect2(13, 206, 94, 50)
+margin = Rect2(8, 6, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqwp5"]
+atlas = ExtResource("3_nxttx")
+region = Rect2(112, 200, 94, 50)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lubpq"]
+shader = ExtResource("4_qo0v3")
+shader_parameter/amount = 1.5
+
+[sub_resource type="Gradient" id="Gradient_atvjx"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_od2d3"]
+gradient = SubResource("Gradient_atvjx")
+
+[sub_resource type="Gradient" id="Gradient_bm5xw"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yyv26"]
+gradient = SubResource("Gradient_bm5xw")
+width = 1920
+height = 1080
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1.58, 0)
+
+[node name="menu_opciones" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ib6e7")
+metadata/_edit_group_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Menu" type="Sprite2D" parent="CanvasLayer"]
+z_index = 1
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_eqsre")
+region_enabled = true
+region_rect = Rect2(112, 16, 288, 336)
+
+[node name="HSlider_musica" type="HSlider" parent="CanvasLayer/Menu"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.5
+anchor_right = 0.889
+anchor_bottom = 0.554
+offset_left = -143.968
+offset_top = -182.0
+offset_right = -144.032
+offset_bottom = -156.144
+theme_override_icons/grabber = SubResource("AtlasTexture_yf1d3")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_yf1d3")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_fvnqx")
+max_value = 40.0
+value = 20.0
+metadata/_edit_lock_ = true
+
+[node name="HSlider_sfx" type="HSlider" parent="CanvasLayer/Menu"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.5
+anchor_right = 0.889
+anchor_bottom = 0.554
+offset_left = -143.968
+offset_top = -134.0
+offset_right = -144.032
+offset_bottom = -120.144
+theme_override_icons/grabber = SubResource("AtlasTexture_yf1d3")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_yf1d3")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_fvnqx")
+max_value = 40.0
+value = 20.0
+metadata/_edit_lock_ = true
+
+[node name="Musica" type="CheckBox" parent="CanvasLayer/Menu"]
+offset_left = 38.0
+offset_top = -29.0
+offset_right = 74.0
+offset_bottom = 5.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2lo3k")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ny4xa")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kbix7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_gy6kl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4inqi")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_icons/checked = SubResource("AtlasTexture_8j458")
+theme_override_icons/unchecked = SubResource("AtlasTexture_34nej")
+theme_override_icons/radio_checked = SubResource("AtlasTexture_8j458")
+theme_override_icons/radio_unchecked = SubResource("AtlasTexture_34nej")
+button_pressed = true
+metadata/_edit_lock_ = true
+
+[node name="Sfx" type="CheckBox" parent="CanvasLayer/Menu"]
+offset_left = 38.0
+offset_top = 14.0
+offset_right = 74.0
+offset_bottom = 48.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2lo3k")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ny4xa")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kbix7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_gy6kl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4inqi")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_icons/checked = SubResource("AtlasTexture_8j458")
+theme_override_icons/unchecked = SubResource("AtlasTexture_34nej")
+theme_override_icons/radio_checked = SubResource("AtlasTexture_8j458")
+theme_override_icons/radio_unchecked = SubResource("AtlasTexture_34nej")
+metadata/_edit_lock_ = true
+
+[node name="Pantalla_completa" type="CheckBox" parent="CanvasLayer/Menu"]
+offset_left = 38.0
+offset_top = 59.5
+offset_right = 74.0
+offset_bottom = 93.5
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2lo3k")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ny4xa")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kbix7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_gy6kl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4inqi")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a3ktu")
+theme_override_icons/checked = SubResource("AtlasTexture_8j458")
+theme_override_icons/unchecked = SubResource("AtlasTexture_34nej")
+theme_override_icons/radio_checked = SubResource("AtlasTexture_8j458")
+theme_override_icons/radio_unchecked = SubResource("AtlasTexture_34nej")
+metadata/_edit_lock_ = true
+
+[node name="Atras" type="TextureButton" parent="CanvasLayer/Menu"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.319681
+anchor_top = 0.804
+anchor_right = 0.645736
+anchor_bottom = 0.952
+offset_left = -142.068
+offset_top = -162.644
+offset_right = -141.972
+offset_bottom = -162.372
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_dre07")
+texture_pressed = SubResource("AtlasTexture_dre07")
+texture_hover = SubResource("AtlasTexture_aqwp5")
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Fondo_Borroso" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_lubpq")
+position = Vector2(960, 544)
+scale = Vector2(30, 17)
+texture = SubResource("GradientTexture2D_od2d3")
+metadata/_edit_lock_ = true
+
+[node name="Oscuridad" type="Sprite2D" parent="CanvasLayer/Fondo_Borroso"]
+position = Vector2(0, -0.117643)
+scale = Vector2(0.0333333, 0.0590414)
+texture = SubResource("GradientTexture2D_yyv26")
+metadata/_edit_lock_ = true
+
+[node name="sfx_node" parent="." instance=ExtResource("5_axc5i")]
+stream = ExtResource("6_m3y2c")
+
+[connection signal="value_changed" from="CanvasLayer/Menu/HSlider_musica" to="." method="_on_h_slider_musica_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Menu/HSlider_sfx" to="." method="_on_h_slider_sfx_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Musica" to="." method="_on_musica_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Sfx" to="." method="_on_sfx_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Pantalla_completa" to="." method="_on_pantalla_completa_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Atras" to="." method="_on_atras_pressed"]

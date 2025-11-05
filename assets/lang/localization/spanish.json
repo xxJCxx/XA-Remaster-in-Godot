@@ -1,0 +1,87 @@
+{
+	"XA_hud-Label_Puntos": "Puntos",
+	"carteles": [
+		{
+			"nombre": "Controles_caminar",
+			"texto": "Usá las teclas (A) y (D) para moverte."
+		},
+		{
+			"nombre": "Controles_salto",
+			"texto": "Usá (K) o (Espacio) para saltar."
+		},
+		{
+			"nombre": "Enemigos",
+			"texto": "¡Cuidado con los enemigos!
+			Pulsá la tecla (J) para disparar."
+		},
+		{
+			"nombre": "Checkpoint",
+			"texto": "¡Éste es un checkpoint. Cuando
+			pierdas una vida reapareceras acá."
+		},
+		{
+			"nombre": "Pisar Enemigos",
+			"texto": "A muchos enemigos podés caerles
+			encima para deshacerte de ellos."
+		},
+		{
+			"nombre": "Objetos punteagudos",
+			"texto": "¡Cuidado! ¡Si pisás esos objetos punteagudos
+			morirás al instante!"
+		},
+		{
+			"nombre": "Agua",
+			"texto": "¡Cuidado! ¡El traje de XA es especialmente
+			vulnerable al agua!"
+		},
+		{
+			"nombre": "Vidas extra",
+			"texto": "Ésto es una vida extra
+			Hay varias en cada nivel."
+		},
+		{
+			"nombre": "Vacas",
+			"texto": "Los extraterrestres han encerrado a las vacas
+			¡Tocálas para liberarlas!"
+		},
+		{
+			"nombre": "Numero vacas",
+			"texto": "Arriba dice cuantas vacas
+			hay que rescatar en el nivel."
+		},
+		{
+			"nombre": "yogur",
+			"texto": "Éste es un yogur Calcar
+			¡Nos da doble salto!"
+		},
+		{
+			"nombre": "Doble salto",
+			"texto": "Pulsá la tecla (K) o (Z) en el
+			aire para dar un salto extra."
+		},
+		{
+			"nombre": "Enemigos explosivos",
+			"texto": "¡Cuidado! Si eliminas a ciertos enemigos
+			disparándoles, la explosión podría dañarte!"
+		},
+		{
+			"nombre": "Escudo",
+			"texto": "¡Usá la tecla (S) para activar el escudo
+			y protegerte de la explosión!"
+		},
+		{
+			"nombre": "Aaaarrancandongaaaaaa",
+			"texto": "Bueno...
+			¡Comienza la acción!"
+		},
+		{
+			"nombre": "Leche",
+			"texto": "La leche Calcar te da energía."
+		},
+		{
+			"nombre": "Fin de nivel",
+			"texto": "Pueblo Los Ceibos
+			Fin de Nivel."
+		}
+	]
+}

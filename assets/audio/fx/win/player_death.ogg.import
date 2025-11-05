@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/player_death.ogg-1c10cfe23b3d9de648c197c0751a
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

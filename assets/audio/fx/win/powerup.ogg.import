@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/powerup.ogg-fe9a7d4100e731b27d6c6f529acf190f.
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

@@ -1,0 +1,329 @@
+[gd_scene load_steps=23 format=4 uid="uid://eqk8cafeasr6"]
+
+[ext_resource type="Script" path="res://assets/data/Enemies/TaladroBot/CharacterBody_TaladroBot.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dnetxu8wuayo" path="res://assets/images/enemies/plantilla_enemigos_xa.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b48k250fn80dh" path="res://assets/images/enemies/plantilla_enemigos_xa_red.png" id="3"]
+[ext_resource type="Script" path="res://assets/data/Enemies/TaladroBot/Area_Daño.gd" id="4"]
+[ext_resource type="AudioStream" uid="uid://dqi8w8nukdtja" path="res://assets/audio/fx/win/enemy_death.ogg" id="5"]
+[ext_resource type="AudioStream" uid="uid://dve2tsbkpud4c" path="res://assets/audio/fx/win/m_3.ogg" id="6"]
+[ext_resource type="Texture2D" uid="uid://c7fceyaepd5wn" path="res://assets/images/elements/planilla_blasts_xa_512x512_24bits.png" id="7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5m4l"]
+size = Vector2(10, 8)
+
+[sub_resource type="Animation" id="Animation_u1th8"]
+resource_name = "Caminando"
+length = 0.500013
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_TaladroBot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_n356f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_TaladroBot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_bomox"]
+resource_name = "hurt"
+length = 0.400005
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}, {
+"args": [],
+"method": &"hurt_true"
+}, {
+"args": [],
+"method": &"hurt_false"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oec0m"]
+_data = {
+"Caminando": SubResource("Animation_u1th8"),
+"RESET": SubResource("Animation_n356f"),
+"hurt": SubResource("Animation_bomox")
+}
+
+[sub_resource type="Animation" id="Animation_yonhw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Muerte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_80se7"]
+resource_name = "explosion"
+length = 0.550005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Muerte:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite_Muerte:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx_Muerte")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite_TaladroBot:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ss5bx"]
+resource_name = "hurt"
+length = 0.400005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_TaladroBot/Sprite_Daño:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rs8m0"]
+_data = {
+"RESET": SubResource("Animation_yonhw"),
+"explosion": SubResource("Animation_80se7"),
+"hurt": SubResource("Animation_ss5bx")
+}
+
+[sub_resource type="Animation" id="Animation_w3p5h"]
+resource_name = "Caminar"
+length = 0.500013
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_TaladroBot/Sprite_Daño:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_k66gt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_TaladroBot/Sprite_Daño:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rv5v0"]
+_data = {
+"Caminar": SubResource("Animation_w3p5h"),
+"RESET": SubResource("Animation_k66gt")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4smc"]
+size = Vector2(32, 16)
+
+[sub_resource type="Gradient" id="Gradient_yiej4"]
+colors = PackedColorArray(0, 0.929412, 0.235294, 0.666667, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qxudf"]
+gradient = SubResource("Gradient_yiej4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.05)
+
+[node name="TaladroBot" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_w5m4l")
+
+[node name="Sprite_TaladroBot" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2")
+offset = Vector2(0, 4)
+hframes = 3
+region_enabled = true
+region_rect = Rect2(2, 432, 159, 54)
+
+[node name="Sprite_Daño" type="Sprite2D" parent="Sprite_TaladroBot"]
+visible = false
+texture = ExtResource("3")
+offset = Vector2(0, 4)
+hframes = 3
+region_enabled = true
+region_rect = Rect2(3, 435, 159, 51)
+
+[node name="Animacion_Caminar" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oec0m")
+}
+
+[node name="Animacion_Daño" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rs8m0")
+}
+
+[node name="Efecto_Verde" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rv5v0")
+}
+
+[node name="Area_Daño" type="Area2D" parent="." groups=["enemigo"]]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_Daño"]
+position = Vector2(4.76837e-07, 8)
+shape = SubResource("RectangleShape2D_y4smc")
+
+[node name="sfx_Muerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5")
+
+[node name="sfx_Daño" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6")
+
+[node name="Sprite_Muerte" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.78, 2, 2, 1)
+z_index = 2
+position = Vector2(5.03398, 7.32201)
+texture = ExtResource("7")
+hframes = 7
+region_enabled = true
+region_rect = Rect2(0, 60, 420, 60)
+
+[node name="Luz_Muerte" type="PointLight2D" parent="Sprite_Muerte"]
+position = Vector2(0, 9)
+texture = SubResource("GradientTexture2D_qxudf")
+texture_scale = 1.91
+
+[node name="RayCastDir" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
+
+[node name="RayCastDir2" type="RayCast2D" parent="."]
+target_position = Vector2(40, 40)
+
+[connection signal="area_entered" from="Area_Daño" to="." method="_on_area_daño_area_entered"]
+[connection signal="body_entered" from="Area_Daño" to="." method="_on_area_daño_body_entered"]
