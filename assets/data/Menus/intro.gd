@@ -1,16 +1,18 @@
 extends Control
 
+var save = preload("res://save/save_data.json")
 @export var Intro2 = false
 var press = false
 @export var Intro = false
 var Diapositiva = -1
 
 
-func _input(event: InputEvent) -> void :
+func _input(_event) -> void :
 	if Input.is_action_just_pressed("Pausa"):
 		get_tree().change_scene_to_file("res://assets/data/Menus/load_menu_principal.tscn")
 
 func _ready() -> void :
+	ResourceSaver.save(save, "user://save_data.json")
 	print(OS.get_user_data_dir())
 	var config = ConfigFile.new()
 	config.load("res://config/config.cfg")
