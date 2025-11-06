@@ -17,54 +17,53 @@ var vida = 2
 @onready var Animaciones = $Animaciones
 
 func destroy():
-    queue_free()
+	queue_free()
 
 func destroy_area():
-    Area_Daño.queue_free()
+	Area_Daño.queue_free()
 
 func hurt_true():
-    Sprite_Daño.visible = true
+	Sprite_Daño.visible = true
 func hurt_false():
-    Sprite_Daño.visible = false
+	Sprite_Daño.visible = false
 func dead():
-    death = true
-    Sprite_Nave.visible = false
-    Sprite_Muerte.visible = true
-    Sprite_Daño.visible = false
-    Animaciones.play("explosion")
+	death = true
+	Sprite_Nave.visible = false
+	Sprite_Muerte.visible = true
+	Sprite_Daño.visible = false
+	Animaciones.play("explosion")
 
 func _process(delta):
-    print((cos(dirx) * MovX))
-    if (cos(dirx) * MovX) < 0 and $Sprite_Nave.flip_h == false:
-        $Sprite_Nave.flip_h = true
-    elif 0 < (cos(dirx) * MovX) and $Sprite_Nave.flip_h == true:
-        $Sprite_Nave.flip_h = false
+	if (cos(dirx) * MovX) < 0 and $Sprite_Nave.flip_h == false:
+		$Sprite_Nave.flip_h = true
+	elif 0 < (cos(dirx) * MovX) and $Sprite_Nave.flip_h == true:
+		$Sprite_Nave.flip_h = false
 
-    if death == true:
-        dirx = 0
-        diry = 0
-    else:
-        position.x += (cos(dirx) * MovX) * delta
-        position.y += (cos(diry) * MovX) * delta
-        dirx += vel.x * delta
-        diry += vel.y * delta
+	if death == true:
+		dirx = 0
+		diry = 0
+	else:
+		position.x += (cos(dirx) * MovX) * delta
+		position.y += (cos(diry) * MovX) * delta
+		dirx += vel.x * delta
+		diry += vel.y * delta
 
 
 func _on_area_2d_body_entered(body):
-    if body.has_method("take_damage"):
-        body.take_damage(5)
-        dead()
+	if body.has_method("take_damage"):
+		body.take_damage(5)
+		dead()
 
 func _on_area_2d_area_entered(area):
-    if area.has_method("jump") and not death:
-        area.Player.añadir_puntos(10)
-        area.jump()
-        dead()
-    elif area.has_method("hit_enemy"):
-        vida -= 1
-        sfx_Daño.play()
-        Animaciones.stop()
-        Animaciones.play("hurt")
-        if vida <= 0:
-            dead()
-            area.player.añadir_puntos(10)
+	if area.has_method("jump") and not death:
+		area.Player.añadir_puntos(10)
+		area.jump()
+		dead()
+	elif area.has_method("hit_enemy"):
+		vida -= 1
+		sfx_Daño.play()
+		Animaciones.stop()
+		Animaciones.play("hurt")
+		if vida <= 0:
+			dead()
+			area.player.añadir_puntos(10)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://cfk2iff16u7w1"]
+[gd_scene load_steps=38 format=3 uid="uid://cfk2iff16u7w1"]
 
 [ext_resource type="Script" path="res://assets/data/Menus/menu_principal.gd" id="1_gr78j"]
 [ext_resource type="Texture2D" uid="uid://dv3jspu7oem70" path="res://assets/lang/images/help/ayuda.jpg" id="2_0yfrm"]
+[ext_resource type="Shader" path="res://assets/data/Shaders/wind.gdshader" id="2_g5prs"]
 [ext_resource type="Texture2D" uid="uid://cs3tooom1mvvk" path="res://assets/lang/images/credits/creditos.jpg" id="3_415ln"]
 [ext_resource type="Texture2D" uid="uid://kvnpq6c1jay7" path="res://assets/data/Menus/Texture_menu_principal_night.tres" id="4_jp0hs"]
 [ext_resource type="Texture2D" uid="uid://dsr7wbb47jl6k" path="res://assets/images/menuElements/buttons_tile.png" id="5_tx7po"]
@@ -11,6 +12,20 @@
 [ext_resource type="AudioStream" uid="uid://bn2ffduxy1t4e" path="res://assets/audio/music/win/xa_menu.ogg" id="9_0vwjp"]
 [ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="10_vcjle"]
 [ext_resource type="AudioStream" uid="uid://dv2x7x7kgcthd" path="res://assets/audio/fx/win/click.ogg" id="11_k3cfk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cstfu"]
+shader = ExtResource("2_g5prs")
+shader_parameter/spacing = 15.0
+shader_parameter/animation_progress = 1.0
+shader_parameter/dot_size = 1.0
+shader_parameter/dot_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_58bib"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_st5l5"]
+gradient = SubResource("Gradient_58bib")
+width = 1920
+height = 1080
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fi10"]
 atlas = ExtResource("2_0yfrm")
@@ -209,6 +224,13 @@ metadata/_edit_horizontal_guides_ = [540.0]
 metadata/_edit_vertical_guides_ = [960.0]
 metadata/_edit_lock_ = true
 
+[node name="transicion" type="Sprite2D" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_cstfu")
+position = Vector2(960, 540)
+texture = SubResource("GradientTexture2D_st5l5")
+region_rect = Rect2(352, 32, 95, 160)
+
 [node name="Ayuda" type="TextureRect" parent="."]
 visible = false
 z_index = 1
@@ -244,6 +266,7 @@ libraries = {
 }
 
 [node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
@@ -256,6 +279,7 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="ColorRect4" type="ColorRect" parent="."]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 240.0

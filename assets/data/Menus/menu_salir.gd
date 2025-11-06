@@ -5,7 +5,7 @@ var oculto = true
 func _ready() -> void :
     $CanvasLayer.hide()
 
-func _input(event: InputEvent) -> void :
+func _input(_event) -> void :
     if Input.is_action_just_pressed("Pausa"):
         $sfx_node.play()
         ocultar()

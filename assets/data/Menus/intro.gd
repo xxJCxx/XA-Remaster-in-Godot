@@ -16,10 +16,8 @@ func _ready() -> void :
 	if not ResourceLoader.exists("user://save_data.json"):
 		ResourceSaver.save(save, "user://save_data.json")
 	if FileAccess.file_exists("user://config.cfg"):
-		print("existe")
 		config.load("user://config.cfg")
 	else:
-		print("no existe")
 		config.load("res://config/config.cfg")
 		config.save("user://config.cfg")
 	$MusicaIntro.actualizar()
@@ -34,7 +32,6 @@ func play_anim2():
 
 
 func _process(_delta) -> void :
-	#print(config.get_value("volumen", "vol_musica"))
 	if Input.is_anything_pressed() and Intro == false and Intro2 == true:
 		Intro = true;
 

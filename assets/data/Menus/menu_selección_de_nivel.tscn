@@ -1,7 +1,8 @@
-[gd_scene load_steps=48 format=4 uid="uid://b3amm2gjfc7yl"]
+[gd_scene load_steps=52 format=4 uid="uid://b3amm2gjfc7yl"]
 
 [ext_resource type="Script" path="res://assets/data/Menus/selección_de_nivel.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://be2ww65qgyi81" path="res://assets/lang/images/intros/preview_levels_tile.jpg" id="2"]
+[ext_resource type="Shader" path="res://assets/data/Shaders/wind.gdshader" id="2_w8ns0"]
 [ext_resource type="Texture2D" uid="uid://dhwsbf38yoa2q" path="res://assets/images/menuElements/map.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://xqyhkfn15itr" path="res://assets/lang/images/intros/fondo_niveles.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bdvre81u0knw4" path="res://assets/images/menuElements/cargando_tile.png" id="5"]
@@ -15,6 +16,20 @@
 [ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="13"]
 [ext_resource type="AudioStream" uid="uid://dv2x7x7kgcthd" path="res://assets/audio/fx/win/click.ogg" id="14"]
 [ext_resource type="Texture2D" uid="uid://blf34cmjp18ti" path="res://Boton_Atras.png" id="15"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4505"]
+shader = ExtResource("2_w8ns0")
+shader_parameter/spacing = 15.0
+shader_parameter/animation_progress = 1.0
+shader_parameter/dot_size = 1.0
+shader_parameter/dot_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_a2wgb"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_023uv"]
+gradient = SubResource("Gradient_a2wgb")
+width = 1920
+height = 1080
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbnvm"]
 atlas = ExtResource("3")
@@ -1634,6 +1649,14 @@ grow_vertical = 2
 script = ExtResource("1")
 metadata/_edit_lock_ = true
 
+[node name="transicion" type="Sprite2D" parent="."]
+top_level = true
+z_index = 3
+material = SubResource("ShaderMaterial_i4505")
+position = Vector2(960, 540)
+texture = SubResource("GradientTexture2D_023uv")
+region_rect = Rect2(352, 32, 95, 160)
+
 [node name="preview_nivel" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
@@ -1668,18 +1691,21 @@ libraries = {
 }
 
 [node name="ColorRect3" type="ColorRect" parent="animacion_transicion"]
+visible = false
 z_index = 4
 offset_left = 240.0
+offset_top = -550.0
 offset_right = 1680.0
-offset_bottom = 557.0
+offset_bottom = 7.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="animacion_transicion"]
+visible = false
 z_index = 4
 offset_left = 240.0
-offset_top = 540.0
+offset_top = 1100.0
 offset_right = 1680.0
-offset_bottom = 1096.0
+offset_bottom = 1656.0
 color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="animacion_transicion"]
@@ -1915,6 +1941,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.401563
 anchor_top = 0.778704
 anchor_right = 0.457813
@@ -1926,6 +1953,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel2" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.620313
 anchor_top = 0.783333
 anchor_right = 0.676562
@@ -1937,6 +1965,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel3" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.560417
 anchor_top = 0.642593
 anchor_right = 0.616667
@@ -1950,6 +1979,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel4" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.741146
 anchor_top = 0.630556
 anchor_right = 0.797396
@@ -1961,6 +1991,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel5" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.569271
 anchor_top = 0.489815
 anchor_right = 0.625521
@@ -1972,6 +2003,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel6" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.771875
 anchor_top = 0.35463
 anchor_right = 0.828125
@@ -1983,6 +2015,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel7" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.56875
 anchor_top = 0.311111
 anchor_right = 0.625
@@ -1994,6 +2027,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel8" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.805208
 anchor_top = 0.188889
 anchor_right = 0.861458
@@ -2005,6 +2039,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel9" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.589458
 anchor_top = 0.111333
 anchor_right = 0.646083
@@ -2018,6 +2053,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel10" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.318229
 anchor_top = 0.353704
 anchor_right = 0.374479
@@ -2029,6 +2065,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel11" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.211458
 anchor_top = 0.767593
 anchor_right = 0.268
@@ -2042,6 +2079,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel12" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.161979
 anchor_top = 0.293519
 anchor_right = 0.218229
@@ -2055,6 +2093,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel13" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.264583
 anchor_top = 0.201852
 anchor_right = 0.320833
@@ -2067,6 +2106,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel14" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.155208
 anchor_top = 0.0694444
 anchor_right = 0.211458
@@ -2080,6 +2120,7 @@ metadata/_edit_lock_ = true
 [node name="botón_nivel15" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.309375
 anchor_top = 0.0675926
 anchor_right = 0.365625
@@ -2097,6 +2138,7 @@ parameters/looping = true
 stream = ExtResource("14")
 
 [node name="Boton_Atras" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2(1531, 7)
 scale = Vector2(2.81, 2.81)
 texture_normal = ExtResource("15")
