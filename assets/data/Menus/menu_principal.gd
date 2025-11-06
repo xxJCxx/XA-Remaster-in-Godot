@@ -15,11 +15,11 @@ func _ready():
 func _process(delta: float) -> void:
 	if $Animacion_transicion.current_animation == "mostrar":
 		animation_progress -= 0.1/3
-		var material_shader: ShaderMaterial = $transicion.material
+		var material_shader: ShaderMaterial = $CanvasLayer/transicion.material
 		material_shader.set_shader_parameter("animation_progress", animation_progress)
 	elif $Animacion_transicion.current_animation == "ocultar":
 		animation_progress += 0.1/4
-		var material_shader: ShaderMaterial = $transicion.material
+		var material_shader: ShaderMaterial = $CanvasLayer/transicion.material
 		material_shader.set_shader_parameter("animation_progress", animation_progress)
 
 func _input(event: InputEvent) -> void :

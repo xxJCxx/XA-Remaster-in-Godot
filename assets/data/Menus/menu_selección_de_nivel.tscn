@@ -1659,7 +1659,7 @@ region_rect = Rect2(352, 32, 95, 160)
 
 [node name="preview_nivel" type="Sprite2D" parent="."]
 visible = false
-z_index = 2
+z_index = 3
 position = Vector2(960, 529)
 scale = Vector2(2.8125, 3)
 texture = ExtResource("2")
@@ -1694,23 +1694,22 @@ libraries = {
 visible = false
 z_index = 4
 offset_left = 240.0
-offset_top = -550.0
 offset_right = 1680.0
-offset_bottom = 7.0
+offset_bottom = 557.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="animacion_transicion"]
 visible = false
 z_index = 4
 offset_left = 240.0
-offset_top = 1100.0
+offset_top = 540.0
 offset_right = 1680.0
-offset_bottom = 1656.0
+offset_bottom = 1096.0
 color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="animacion_transicion"]
 visible = false
-z_index = 3
+z_index = 4
 offset_left = 240.0
 offset_top = 7.0
 offset_right = 1035.0
@@ -1728,6 +1727,7 @@ vframes = 9
 
 [node name="Sprite_cargando" type="AnimatedSprite2D" parent="animacion_transicion/TextureRect"]
 visible = false
+z_index = 1
 position = Vector2(592.715, 566.777)
 scale = Vector2(1.55374, 1.5694)
 sprite_frames = SubResource("SpriteFrames_7w5jc")
@@ -1742,6 +1742,7 @@ scale = Vector2(1.53464, 1.39386)
 sprite_frames = SubResource("SpriteFrames_q7mku")
 
 [node name="Descripcion" type="Label" parent="animacion_transicion/TextureRect"]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.11195
@@ -1761,6 +1762,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Nombre_nivel" type="Label" parent="animacion_transicion/TextureRect"]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.249057
@@ -1777,6 +1779,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Nivel" type="Label" parent="animacion_transicion/TextureRect"]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.823997

@@ -20,6 +20,10 @@ func _ready() -> void :
 	else:
 		config.load("res://config/config.cfg")
 		config.save("user://config.cfg")
+	if config.get_value("video", "pantalla_completa"):
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	$MusicaIntro.actualizar()
 	$sfx_piano.actualizar()
 	$Animaciones.play("Intro")

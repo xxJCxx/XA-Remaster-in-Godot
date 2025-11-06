@@ -59,6 +59,10 @@ func _process(delta: float) -> void :
 		animation_progress += 0.1/4
 		var material_shader: ShaderMaterial = $transicion.material
 		material_shader.set_shader_parameter("animation_progress", animation_progress)
+	elif $animacion_transicion.current_animation == "cargar_nivel":
+		animation_progress += 0.1/4
+		var material_shader: ShaderMaterial = $transicion.material
+		material_shader.set_shader_parameter("animation_progress", animation_progress)
 	
 	if nivel_listo:
 		cargar_nivel()

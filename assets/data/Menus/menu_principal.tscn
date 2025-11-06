@@ -224,8 +224,12 @@ metadata/_edit_horizontal_guides_ = [540.0]
 metadata/_edit_vertical_guides_ = [960.0]
 metadata/_edit_lock_ = true
 
-[node name="transicion" type="Sprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="transicion" type="Sprite2D" parent="CanvasLayer"]
 top_level = true
+z_index = 100
 material = SubResource("ShaderMaterial_cstfu")
 position = Vector2(960, 540)
 texture = SubResource("GradientTexture2D_st5l5")
@@ -273,8 +277,9 @@ anchors_preset = -1
 anchor_left = 0.125
 anchor_right = 0.875
 anchor_bottom = 1.0
+offset_top = -560.0
 offset_right = -0.00012207
-offset_bottom = -523.0
+offset_bottom = -1083.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
@@ -283,9 +288,9 @@ visible = false
 z_index = 1
 layout_mode = 0
 offset_left = 240.0
-offset_top = 540.0
+offset_top = 1100.0
 offset_right = 1680.0
-offset_bottom = 1096.0
+offset_bottom = 1656.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
