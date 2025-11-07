@@ -31,6 +31,7 @@ func actualizar_nivel(pos):
 		$info_nivel / Puntos.text = "0" + $info_nivel / Puntos.text
 
 func _ready() -> void :
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	save = ResourceLoader.load("user://save_data.json")
 	nivel_actual = save.data.nivel_actual
 
@@ -49,7 +50,7 @@ func _ready() -> void :
 
 	$Animacion_flecha.play("animacion")
 	actualizar_nivel(nivel)
-func _process(delta: float) -> void :
+func _process(_delta) -> void :
 	
 	if $animacion_transicion.current_animation == "mostrar":
 		animation_progress -= 0.1/3

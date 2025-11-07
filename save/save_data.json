@@ -48,7 +48,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "Bosque de Eucaliptos",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -59,7 +59,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "Las Cuevas Profundas",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -70,7 +70,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "El bosque Oscuro",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -81,7 +81,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "Pueblo \"Las Violetas\"",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -92,7 +92,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "La Gran Ciudad",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -103,7 +103,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "La Capital",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -114,7 +114,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "El Puerto",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -125,7 +125,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "La Antártida",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -136,7 +136,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "La Luna",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -147,7 +147,7 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "La Base Lunar",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,
@@ -158,7 +158,18 @@
 			"puntos": 0
 		},
 		{
-			"nombre": "Los Silos",
+			"nombre": "La Nave Nodriza",
+			"desbloqueado": false,
+			"monedas": 0,
+			"vacas": 0,
+			"vacas_por_conseguir": 1,
+			"tiempoX": 0,
+			"tiempoY": 0,
+			"tiempo_str": "00 : 00",
+			"puntos": 0
+		},
+		{
+			"nombre": "La Computadora Central",
 			"desbloqueado": false,
 			"monedas": 0,
 			"vacas": 0,

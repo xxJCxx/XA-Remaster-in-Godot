@@ -12,7 +12,7 @@ func _ready():
 	else:
 		$Fondo.texture = menu
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if $Animacion_transicion.current_animation == "mostrar":
 		animation_progress -= 0.1/3
 		var material_shader: ShaderMaterial = $CanvasLayer/transicion.material
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		var material_shader: ShaderMaterial = $CanvasLayer/transicion.material
 		material_shader.set_shader_parameter("animation_progress", animation_progress)
 
-func _input(event: InputEvent) -> void :
+func _input(_event) -> void :
 	if Input.is_action_just_pressed("Pausa") and $menu_opciones.activo == true and not $Ayuda.visible:
 		$sfx_node.play()
 		$menu_opciones.ocultar()

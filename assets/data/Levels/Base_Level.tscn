@@ -1,15 +1,32 @@
-[gd_scene load_steps=8 format=4 uid="uid://dsf1y2fhxdqgr"]
+[gd_scene load_steps=14 format=4 uid="uid://dsf1y2fhxdqgr"]
 
 [ext_resource type="Script" path="res://assets/data/Levels/Base_Level.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bea207b44fohi" path="res://assets/data/Menus/menu_pausa.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://csble5vukmh8g" path="res://assets/data/Player/xa.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://cdyd8it8yinyp" path="res://assets/audio/music/music_node.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://d3jafavmsgija" path="res://assets/audio/music/win/xa_1.ogg" id="5"]
+[ext_resource type="PackedScene" uid="uid://q1e66hhle40r" path="res://assets/audio/fx/sfx_node.tscn" id="6_upodm"]
+[ext_resource type="AudioStream" uid="uid://cac1iosn1v357" path="res://assets/audio/fx/win/end_level.ogg" id="7_mihlc"]
+[ext_resource type="Shader" path="res://assets/data/Shaders/wind.gdshader" id="8_mvsrj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o1lil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbpib"]
 size = Vector2(192, 394)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jc8t0"]
+shader = ExtResource("8_mvsrj")
+shader_parameter/spacing = 15.0
+shader_parameter/animation_progress = 0.0
+shader_parameter/dot_size = 1.0
+shader_parameter/dot_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_a2wgb"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cn3lm"]
+gradient = SubResource("Gradient_a2wgb")
+width = 1920
+height = 1080
 
 [node name="Base_level" type="Node2D"]
 script = ExtResource("1")
@@ -52,7 +69,7 @@ motion_scale = Vector2(0.1, 0.1)
 
 [node name="Sprite_Fondo" type="Sprite2D" parent="Parallax_Fondo/ParallaxLayer2"]
 z_index = -2
-position = Vector2(224, 200)
+position = Vector2(512, 200)
 metadata/_edit_lock_ = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax_Fondo"]
@@ -60,7 +77,7 @@ motion_scale = Vector2(0.1, 0.1)
 
 [node name="Sprite_Fondo" type="Sprite2D" parent="Parallax_Fondo/ParallaxLayer"]
 z_index = -2
-position = Vector2(1248, 200)
+position = Vector2(2560, 200)
 metadata/_edit_lock_ = true
 
 [node name="Parallax_Cielo" type="ParallaxBackground" parent="."]
@@ -89,7 +106,25 @@ metadata/_edit_lock_ = true
 stream = ExtResource("5")
 autoplay = true
 
+[node name="sfx_node" parent="." instance=ExtResource("6_upodm")]
+stream = ExtResource("7_mihlc")
+
 [node name="fin_nivel" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fin_nivel"]
 shape = SubResource("RectangleShape2D_kbpib")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="transicion" type="Sprite2D" parent="CanvasLayer"]
+top_level = true
+z_index = 3
+material = SubResource("ShaderMaterial_jc8t0")
+position = Vector2(960, 540)
+texture = SubResource("GradientTexture2D_cn3lm")
+region_rect = Rect2(352, 32, 95, 160)
+
+[node name="Timer_end_anim" type="Timer" parent="CanvasLayer"]
+wait_time = 4.0
+
+[connection signal="timeout" from="CanvasLayer/Timer_end_anim" to="." method="_on_timer_end_anim_timeout"]

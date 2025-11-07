@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d10uyhdyi5780"]
+[gd_scene load_steps=16 format=3 uid="uid://d10uyhdyi5780"]
 
 [ext_resource type="Script" path="res://assets/data/Enemies/Mini_Nave/mini_nave.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dnetxu8wuayo" path="res://assets/images/enemies/plantilla_enemigos_xa.png" id="2"]
@@ -145,7 +145,7 @@ vel = Vector2(1.25, 2.5)
 z_index = 2
 texture = ExtResource("2")
 region_enabled = true
-region_rect = Rect2(192, 48, 68, 56)
+region_rect = Rect2(192, 50, 68, 54)
 
 [node name="Sprite_Daño" type="Sprite2D" parent="."]
 visible = false

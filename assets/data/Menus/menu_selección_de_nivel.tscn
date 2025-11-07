@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://assets/data/Menus/selección_de_nivel.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://be2ww65qgyi81" path="res://assets/lang/images/intros/preview_levels_tile.jpg" id="2"]
-[ext_resource type="Shader" path="res://assets/data/Shaders/wind.gdshader" id="2_w8ns0"]
 [ext_resource type="Texture2D" uid="uid://dhwsbf38yoa2q" path="res://assets/images/menuElements/map.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://xqyhkfn15itr" path="res://assets/lang/images/intros/fondo_niveles.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bdvre81u0knw4" path="res://assets/images/menuElements/cargando_tile.png" id="5"]
@@ -17,17 +16,79 @@
 [ext_resource type="AudioStream" uid="uid://dv2x7x7kgcthd" path="res://assets/audio/fx/win/click.ogg" id="14"]
 [ext_resource type="Texture2D" uid="uid://blf34cmjp18ti" path="res://Boton_Atras.png" id="15"]
 
+[sub_resource type="Shader" id="Shader_gh7wg"]
+code = "shader_type canvas_item;
+
+uniform float spacing = 25.0;
+uniform float animation_progress : hint_range(0.0, 1.0) = 0.0;
+uniform float dot_size : hint_range(0.0, 1.0) = 1.0;
+uniform vec4 dot_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+void fragment() {
+    // 1. 进度为零时强制完全不显示
+    if (animation_progress <= 0.0) {
+        discard; // 关键修正：只保留 discard
+    }
+	
+    // 2. 计算屏幕网格尺寸
+    vec2 screen_size = vec2(1.0) / SCREEN_PIXEL_SIZE;
+    vec2 grid_count = floor(screen_size / spacing); 
+	
+    // 3. 计算归一化网格位置 [0,1]
+    vec2 norm_pos = UV * screen_size / (grid_count * spacing);
+	
+    // 4. 对角线延迟计算（左上0 → 右下1）
+    float delay = (norm_pos.x + norm_pos.y) * 0.5;
+	
+    // 5. 双重过滤机制
+    // 机制1：基于位置的延迟阈值
+    float visible_threshold = delay * 0.1 + 0.01; // 随延迟增加的阈值
+    if (animation_progress < visible_threshold) {
+        discard;
+    } 
+	
+    // 6. 动态过渡计算
+    float transition = 0.3;
+    float scale = smoothstep(
+        delay - transition,
+        delay + transition,
+        animation_progress * (1.0 + transition)
+    ); 
+	
+    // 机制2：基于尺寸的过滤
+    if (scale < 0.005) { // 完全消除微小残留
+        discard;
+    }
+    
+    // 7. 计算圆点
+    vec2 grid_center = (floor(UV * screen_size / spacing) + 0.5) * spacing;
+    float dist = length(UV * screen_size - grid_center);
+    float dot_radius = dot_size * scale * spacing * 0.8;
+    
+    // 8. 边缘柔化（防止任何残留）
+    float alpha = 1.0 - smoothstep(
+        max(dot_radius - 1.5, 0.0),
+        dot_radius + 1.5, 
+        dist
+    );
+    
+    // 机制3：alpha值过滤
+    if (alpha < 0.01) discard; 
+    
+    COLOR = vec4(dot_color.rgb, alpha);
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i4505"]
-shader = ExtResource("2_w8ns0")
+shader = SubResource("Shader_gh7wg")
 shader_parameter/spacing = 15.0
 shader_parameter/animation_progress = 1.0
 shader_parameter/dot_size = 1.0
 shader_parameter/dot_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Gradient" id="Gradient_a2wgb"]
+[sub_resource type="Gradient" id="Gradient_lvu18"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_023uv"]
-gradient = SubResource("Gradient_a2wgb")
+gradient = SubResource("Gradient_lvu18")
 width = 1920
 height = 1080
 
@@ -2000,7 +2061,7 @@ anchor_top = 0.489815
 anchor_right = 0.625521
 anchor_bottom = 0.562037
 disabled = true
-num_nivel = 4
+num_nivel = 5
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel6" parent="." instance=ExtResource("10")]
@@ -2012,7 +2073,7 @@ anchor_top = 0.35463
 anchor_right = 0.828125
 anchor_bottom = 0.426852
 disabled = true
-num_nivel = 5
+num_nivel = 6
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel7" parent="." instance=ExtResource("10")]
@@ -2024,7 +2085,7 @@ anchor_top = 0.311111
 anchor_right = 0.625
 anchor_bottom = 0.383333
 disabled = true
-num_nivel = 6
+num_nivel = 7
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel8" parent="." instance=ExtResource("10")]
@@ -2036,7 +2097,7 @@ anchor_top = 0.188889
 anchor_right = 0.861458
 anchor_bottom = 0.261111
 disabled = true
-num_nivel = 7
+num_nivel = 8
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel9" parent="." instance=ExtResource("10")]
@@ -2050,7 +2111,7 @@ anchor_bottom = 0.183556
 offset_right = -72.48
 offset_bottom = -52.24
 disabled = true
-num_nivel = 8
+num_nivel = 9
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel10" parent="." instance=ExtResource("10")]
@@ -2062,74 +2123,86 @@ anchor_top = 0.353704
 anchor_right = 0.374479
 anchor_bottom = 0.425926
 disabled = true
-num_nivel = 9
+num_nivel = 10
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel11" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.211458
-anchor_top = 0.767593
-anchor_right = 0.268
-anchor_bottom = 0.84
+anchor_left = 0.435937
+anchor_top = 0.55463
+anchor_right = 0.511229
+anchor_bottom = 0.651111
 offset_right = -72.56
 offset_bottom = -52.2
 disabled = true
-num_nivel = 10
+num_nivel = 11
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel12" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.161979
-anchor_top = 0.293519
-anchor_right = 0.218229
-anchor_bottom = 0.365741
+anchor_left = 0.214063
+anchor_top = 0.757407
+anchor_right = 0.270312
+anchor_bottom = 0.82963
 grow_horizontal = 2
 grow_vertical = 2
 disabled = true
-num_nivel = 11
+num_nivel = 12
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel13" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.264583
-anchor_top = 0.201852
-anchor_right = 0.320833
-anchor_bottom = 0.274074
+anchor_left = 0.183854
+anchor_top = 0.286111
+anchor_right = 0.240104
+anchor_bottom = 0.358333
 offset_left = 3.05176e-05
 disabled = true
-num_nivel = 12
+num_nivel = 13
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel14" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.155208
-anchor_top = 0.0694444
-anchor_right = 0.211458
-anchor_bottom = 0.141667
+anchor_left = 0.266667
+anchor_top = 0.209259
+anchor_right = 0.322917
+anchor_bottom = 0.281482
 grow_horizontal = 2
 grow_vertical = 0
 disabled = true
-num_nivel = 13
+num_nivel = 14
 metadata/_edit_lock_ = true
 
 [node name="botón_nivel15" parent="." instance=ExtResource("10")]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.309375
-anchor_top = 0.0675926
-anchor_right = 0.365625
-anchor_bottom = 0.139815
+anchor_left = 0.155208
+anchor_top = 0.0842593
+anchor_right = 0.211458
+anchor_bottom = 0.156482
 disabled = true
-num_nivel = 14
+num_nivel = 15
+metadata/_edit_lock_ = true
+
+[node name="botón_nivel16" parent="." instance=ExtResource("10")]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.317708
+anchor_top = 0.0787037
+anchor_right = 0.373958
+anchor_bottom = 0.150926
+disabled = true
+num_nivel = 16
 metadata/_edit_lock_ = true
 
 [node name="Music_node" parent="." instance=ExtResource("11")]

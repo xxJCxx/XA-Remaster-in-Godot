@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://8h2mwjd4a4sb"]
+[gd_scene load_steps=26 format=3 uid="uid://8h2mwjd4a4sb"]
 
 [ext_resource type="Script" path="res://assets/data/Elements/checkpoint/checkpoint.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ju20lcdb1so7" path="res://assets/images/elements/save_tile.png" id="2"]
@@ -203,6 +203,7 @@ amount = 1
 process_material = SubResource("ParticleProcessMaterial_ioeb2")
 texture = SubResource("GradientTexture2D_ie5ox")
 lifetime = 2.0
+randomness = 0.11
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
 position = Vector2(-24, 95)
@@ -211,6 +212,7 @@ amount = 1
 process_material = SubResource("ParticleProcessMaterial_ksa2i")
 texture = SubResource("GradientTexture2D_ie5ox")
 lifetime = 2.0
+randomness = 1.0
 
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
 position = Vector2(-3, 98)
@@ -219,6 +221,7 @@ amount = 1
 process_material = SubResource("ParticleProcessMaterial_jjb04")
 texture = SubResource("GradientTexture2D_ie5ox")
 lifetime = 2.0
+randomness = 0.42
 
 [node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
 position = Vector2(0, 131)
@@ -226,6 +229,7 @@ amount = 1
 process_material = SubResource("ParticleProcessMaterial_hpohb")
 texture = SubResource("GradientTexture2D_ie5ox")
 lifetime = 2.0
+randomness = 0.64
 
 [node name="GPUParticles2D5" type="GPUParticles2D" parent="."]
 position = Vector2(0, 155)
@@ -233,5 +237,6 @@ amount = 1
 process_material = SubResource("ParticleProcessMaterial_dak87")
 texture = SubResource("GradientTexture2D_ie5ox")
 lifetime = 2.0
+randomness = 0.87
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
