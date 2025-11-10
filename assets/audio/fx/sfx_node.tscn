@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=4 uid="uid://q1e66hhle40r"]
+[gd_scene load_steps=2 format=3 uid="uid://q1e66hhle40r"]
 
 [ext_resource type="Script" path="res://assets/audio/fx/sfx_node.gd" id="1"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/data/Menus/menu_principal.gd" id="1_gr78j"]
 [ext_resource type="Texture2D" uid="uid://dv3jspu7oem70" path="res://assets/lang/images/help/ayuda.jpg" id="2_0yfrm"]
-[ext_resource type="Shader" path="res://assets/data/Shaders/wind.gdshader" id="2_g5prs"]
+[ext_resource type="Shader" path="res://assets/data/Shaders/efecto_transicion.gdshader" id="2_d7xdh"]
 [ext_resource type="Texture2D" uid="uid://cs3tooom1mvvk" path="res://assets/lang/images/credits/creditos.jpg" id="3_415ln"]
 [ext_resource type="Texture2D" uid="uid://kvnpq6c1jay7" path="res://assets/data/Menus/Texture_menu_principal_night.tres" id="4_jp0hs"]
 [ext_resource type="Texture2D" uid="uid://dsr7wbb47jl6k" path="res://assets/images/menuElements/buttons_tile.png" id="5_tx7po"]
@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dv2x7x7kgcthd" path="res://assets/audio/fx/win/click.ogg" id="11_k3cfk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cstfu"]
-shader = ExtResource("2_g5prs")
+shader = ExtResource("2_d7xdh")
 shader_parameter/spacing = 15.0
 shader_parameter/animation_progress = 1.0
 shader_parameter/dot_size = 1.0

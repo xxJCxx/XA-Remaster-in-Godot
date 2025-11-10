@@ -15,7 +15,7 @@ config/description="Version Fanmade renovada del clasico XA
 
 Hecho por JC Martinz"
 config/version="1.0"
-run/main_scene="res://assets/data/Menus/intro.tscn"
+run/main_scene="res://assets/data/Levels/Campos_del_Oeste/campos_del_oeste.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
